@@ -8,7 +8,7 @@ void main() {
 // 1. weather design half
 // 2. weather api 
 // 3. image api -> fix
-// 4. search
+// 4. search -> FIX
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

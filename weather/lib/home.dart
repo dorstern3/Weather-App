@@ -12,7 +12,7 @@ class home extends StatefulWidget {
 
 
 class _homeState extends State<home> {
-  //List<CountryClass> countryList = [];
+  List<CountryClass> countryList=[];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,15 +76,6 @@ class _homeState extends State<home> {
                         // ),
                       // // Speace between row
                       //     const SizedBox(width: 20,)
-
-                      //    Image.network(
-                      //    country.name,
-                      //       errorBuilder: (context, error, stackTrace) =>
-                      //       SvgPicture.network(
-                      //   country.flag, width:100 , height: 60,
-                      //  placeholderBuilder: (context) => Icon(Icons.error),
-                      //   ),
-                      //     ),
                                      
                         ],   
                       ),
@@ -103,6 +94,13 @@ class _homeState extends State<home> {
 
 // Search function
 void searchCountry(String query){
- 
+ final suggestions = countryList.where((country){
+  final countryName = country.name.toLowerCase();
+  final input = query.toLowerCase();
+
+return country.name.contains(input);
+ }).toList();
+
+ setState(() => countryList =  suggestions);
 }
 }
