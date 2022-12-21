@@ -26,7 +26,7 @@ class _homeState extends State<home> {
           child: TextField(
             decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'search'
+                  hintText: 'search country'
           ),
           onChanged:searchCountry,
           ),

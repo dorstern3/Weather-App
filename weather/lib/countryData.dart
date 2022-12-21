@@ -20,6 +20,7 @@ class CountryClass{
 }
 
 // request data
+// https://countriesnow.space/api/v0.1/countries/flag/images
 Future<List<CountryClass>> getAllCountries() async {
   var response = await http.get(Uri.parse('https://countriesnow.space/api/v0.1/countries/flag/images'));
   var jsonData = jsonDecode(response.body);
