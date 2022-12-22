@@ -6,3 +6,6 @@
 
 ## Description:
 List of countries and their weather.
+
+## Install:
+- Run flutter pub get.
