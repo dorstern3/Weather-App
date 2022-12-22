@@ -1,4 +1,4 @@
-# weather2
+# Weather-App
 
 ## View:
 - ### Android phone:
