@@ -4,11 +4,10 @@ void main() {
   runApp(const MyApp());
 }
 
-//Task:
-// 1. weather design half
-// 2. weather api 
-// 3. image api -> fix
-// 4. search -> FIX
+// Problems:
+// 1. weather api problem
+// 3. image api problem
+// 4. search problem
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

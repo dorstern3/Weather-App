@@ -28,7 +28,7 @@ class _homeState extends State<home> {
                   border: OutlineInputBorder(),
                   hintText: 'search country'
           ),
-          onChanged:searchCountry,
+          //onChanged:searchCountry,
           ),
         ),
 
@@ -56,7 +56,9 @@ class _homeState extends State<home> {
                     child: InkWell(
                       onTap: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => weather()));
+                            MaterialPageRoute(builder: (context) => weather(
+                              // result: country.name,
+                            )));
                       },
 //Row
                       child: Row(
@@ -93,14 +95,14 @@ class _homeState extends State<home> {
   }
 
 // Search function
-void searchCountry(String query){
- final suggestions = countryList.where((country){
-  final countryName = country.name.toLowerCase();
-  final input = query.toLowerCase();
+// void searchCountry(String query){
+//  final suggestions = countryList.where((country){
+//   final countryName = country.name.toLowerCase();
+//   final input = query.toLowerCase();
 
-return country.name.contains(input);
- }).toList();
+// return country.name.contains(input);
+//  }).toList();
 
- setState(() => countryList =  suggestions);
-}
+//  setState(() => countryList =  suggestions);
+// }
 }

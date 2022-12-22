@@ -4,8 +4,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:weather/weatherData.dart';
 
 class weather extends StatefulWidget {
-  const weather({super.key});
-
+  // result for search function
+  // final String? result;
+  // const weather({Key? key, required this.result}) : super(key: key);
+  
+  
   @override
   State<weather> createState() => _weatherState();
 }
@@ -15,10 +18,14 @@ class _weatherState extends State<weather> {
  // data weather Variable
   WeatherClass? response;
 
+
+   
+
 // active function
  void initState() {
     // TODO: implement initState
     super.initState();
+    //search(widget.result);
     search();
   }
 
@@ -86,11 +93,19 @@ class _weatherState extends State<weather> {
   }
 
   // search Weather
-  void search() async {
-   // all data variable
+  // void search(value) async  {
+  //   final  WeatherClass weather = await WeatherService().getWeather('$value');
+  //   setState(() => response = weather);
+  //   }
+
+ void search() async  {
     final weather = await WeatherService().getWeather('New York');
     setState(() => response = weather);
-  }
+    }
+ 
 }
+
+
+
 
 

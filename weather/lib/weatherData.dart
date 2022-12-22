@@ -55,7 +55,7 @@ class WeatherService {
     // http://api.weatherstack.com/current?access_key=083b75149012f874c9701d594d8ed854&query=New%20Yorkt
 
     final parameters = {
-      'access_key': 'a5341b0be873be3fd190a8ebaa031cde',
+      'access_key': 'eb905d3cd226c817c79c570256df4a0f',
       'query': country
     };
 
