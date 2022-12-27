@@ -10,9 +10,8 @@ class home extends StatefulWidget {
   State<home> createState() => _homeState();
 }
 
-
 class _homeState extends State<home> {
-  List<CountryClass> countryList=[];
+  List<CountryClass> countryList = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,74 +20,74 @@ class _homeState extends State<home> {
       ),
       // Search Country
       body: Column(
-        children: <Widget>[ Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-          child: TextField(
-            decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'search country'
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            child: TextField(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), hintText: 'search country'),
+              //onChanged:searchCountry,
+            ),
           ),
-          //onChanged:searchCountry,
-          ),
-        ),
 
-      // List Country
-      Expanded(
-     child: FutureBuilder<List<CountryClass>>(
-        future: getAllCountries(),
-        builder: (context, snapshot) {
+          // List Country
+          Expanded(
+            child: FutureBuilder<List<CountryClass>>(
+              future: getAllCountries(),
+              builder: (context, snapshot) {
 // if data is null
-          if (snapshot.data == null) {
-            return const CircularProgressIndicator();
-          }
-          // if data have data
-          else {
-            List<CountryClass> countryList = snapshot.data!;
+                if (snapshot.data == null) {
+                  return const CircularProgressIndicator();
+                }
+                // if data have data
+                else {
+                  List<CountryClass> countryList = snapshot.data!;
 
 //ListView
-            return ListView.builder(
-                itemCount: countryList.length,
-                itemBuilder: (context, index) {
-                  CountryClass country = countryList[index];
+                  return ListView.builder(
+                      itemCount: countryList.length,
+                      itemBuilder: (context, index) {
+                        CountryClass country = countryList[index];
 //Card
-                  return Card(
-                     // on tap navigate to weather data
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => weather(
-                              // result: country.name,
-                            )));
-                      },
+                        return Card(
+                          // on tap navigate to weather data
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => weather(
+                                            result: country.name,
+                                          )));
+                            },
 //Row
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 25),
-                            child: Text(
-                              country.name,
-                              style: TextStyle(fontSize: 20),
-                            ),   
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 25, vertical: 25),
+                                  child: Text(
+                                    // name of country
+                                    country.name,
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ),
+
+                                // SvgPicture.network(
+                                // country.flag, width:100 , height: 60,
+                                // placeholderBuilder: (context) => Icon(Icons.error),
+                                // ),
+                                // // Speace between row
+                                //     const SizedBox(width: 20,)
+                              ],
+                            ),
                           ),
-      
-                        // SvgPicture.network(
-                        // country.flag, width:100 , height: 60,
-                        // placeholderBuilder: (context) => Icon(Icons.error),
-                        // ),
-                      // // Speace between row
-                      //     const SizedBox(width: 20,)
-                                     
-                        ],   
-                      ),
-                      
-                    ),
-                  );
-                });
-          }
-        },
-      ),
-      ),
+                        );
+                      });
+                }
+              },
+            ),
+          ),
         ],
       ),
     );

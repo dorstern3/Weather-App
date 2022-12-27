@@ -5,28 +5,23 @@ import 'package:weather/weatherData.dart';
 
 class weather extends StatefulWidget {
   // result for search function
-  // final String? result;
-  // const weather({Key? key, required this.result}) : super(key: key);
-  
-  
+  final String? result;
+  const weather({Key? key, required this.result}) : super(key: key);
+
   @override
   State<weather> createState() => _weatherState();
 }
 
 class _weatherState extends State<weather> {
-
- // data weather Variable
+  // data weather Variable
   WeatherClass? response;
 
-
-   
-
 // active function
- void initState() {
+  void initState() {
     // TODO: implement initState
     super.initState();
-    //search(widget.result);
-    search();
+    search(widget.result);
+    //search();
   }
 
   @override
@@ -34,78 +29,138 @@ class _weatherState extends State<weather> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Weather List'),
-         centerTitle: true,
+        centerTitle: true,
       ),
       body: FractionallySizedBox(
         widthFactor: 1.0, //width
         heightFactor: 0.6, // height
-      
-      child: Container(
-        color: Colors.lightBlue,
-        child: Column(
-          children: [
-            // if have data
-            if (response != null)
-              Column(
-                children: [
-                  // country
+
+        child: Container(
+          color: Colors.lightBlue,
+          child: Column(
+            children: [
+              // if have data
+              if (response != null)
+                Column(
+                  children: [
+                    // country
                     Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-                    Text(
-                      'Country: ${response!.country}',
-                      style: TextStyle(fontSize: 40),
-                      
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Country: ',
+                          style: TextStyle(
+                              fontSize: 40, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '${response!.country}',
+                          style: TextStyle(
+                            fontSize: 40,
+                          ),
+                        ),
+                      ],
                     ),
+
                     // temperature
                     Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-                    Text(
-                      'Temperature: ${response!.temperature}°C',
-                      style: TextStyle(fontSize: 35),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Temperature: ',
+                          style: TextStyle(
+                              fontSize: 35, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '${response!.temperature}°C',
+                          style: TextStyle(fontSize: 35),
+                        ),
+                      ],
                     ),
+
                     // description
                     Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-                    Text(
-                      'Description: ${response!.description}',
-                      style: TextStyle(fontSize: 30),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Description: ',
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '${response!.description}',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                      ],
                     ),
+
                     // localtime
                     Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-                    Text(
-                      'Localtime: ${response!.localtime}',
-                      style: TextStyle(fontSize: 25),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Localtime: ',
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '${response!.localtime}',
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
+                        ),
+                      ],
                     ),
+
                     // wind_speed
                     Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-                    Text(
-                      'Wind Speed: ${response!.wind_speed} km/h',
-                      style: TextStyle(fontSize: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Wind Speed: ',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          '${response!.wind_speed} km/h',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
                     ),
-                ],
-              ),
-              // if no have data
-            if (response == null)
-            Text('error = data is null'),
-          ],
-           
+                  ],
+                ),
+
+              // if data is null
+              if (response == null)
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  child: const CircularProgressIndicator(
+                    color: Colors.black,
+                  ),
+                ),
+            ],
+          ),
         ),
-      ),
       ),
     );
   }
 
   // search Weather
-  // void search(value) async  {
-  //   final  WeatherClass weather = await WeatherService().getWeather('$value');
-  //   setState(() => response = weather);
-  //   }
-
- void search() async  {
-    final weather = await WeatherService().getWeather('New York');
+  void search(value) async {
+    final WeatherClass weather = await WeatherService().getWeather('$value');
     setState(() => response = weather);
-    }
- 
+  }
+
+// check if api weather work
+//  void search() async  {
+//     final weather = await WeatherService().getWeather('New York');
+//     setState(() => response = weather);
+//     }
+
 }
-
-
-
-
-

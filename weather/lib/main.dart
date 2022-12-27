@@ -5,9 +5,8 @@ void main() {
 }
 
 // Problems:
-// 1. weather api problem
-// 3. image api problem
-// 4. search problem
+// 1. image api problem
+// 2. search problem
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
