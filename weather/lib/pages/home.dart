@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:weather/weather.dart';
-import 'countryData.dart';
+import 'package:weather/pages/weather.dart';
+import '../data api/countryData.dart';
 
 class home extends StatefulWidget {
   const home({super.key});

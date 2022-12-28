@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weather/home.dart';
+import 'package:weather/pages/home.dart';
+import 'package:weather/pages/splash.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: home(),
+      home: splash(),
     );
   }
 }
