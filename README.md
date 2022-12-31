@@ -1,7 +1,7 @@
 # Weather-App
 
 ## View:
-- ### Android phone:
+- ### Android device:
 - ### Web:
 
 ## Description:
