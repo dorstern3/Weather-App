@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:weather/pages/weather.dart';
+import 'package:weather/screens/weather.dart';
 import '../data api/countryData.dart';
 
 class home extends StatefulWidget {
@@ -11,7 +11,13 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
+  // full list country
   List<CountryClass> countryList = [];
+  // filter list
+  List<CountryClass> searchResult = [];
+
+  TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +30,11 @@ class _homeState extends State<home> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             child: TextField(
+              // if a character was typed
+              controller: controller,
               decoration: InputDecoration(
                   border: OutlineInputBorder(), hintText: 'search country'),
-              //onChanged:searchCountry,
+              onChanged: searchCountry,
             ),
           ),
 
@@ -41,13 +49,17 @@ class _homeState extends State<home> {
                 }
                 // if data have data
                 else {
-                  List<CountryClass> countryList = snapshot.data!;
+                  countryList = snapshot.data!;
 
 //ListView
                   return ListView.builder(
-                      itemCount: countryList.length,
+                      itemCount: controller.text.isEmpty
+                          ? countryList.length
+                          : searchResult.length,
                       itemBuilder: (context, index) {
-                        CountryClass country = countryList[index];
+                        CountryClass country = controller.text.isEmpty
+                            ? countryList[index]
+                            : searchResult[index];
 //Card
                         return Card(
                           // on tap navigate to weather data
@@ -73,12 +85,13 @@ class _homeState extends State<home> {
                                   ),
                                 ),
 
-                                // SvgPicture.network(
-                                // country.flag, width:100 , height: 60,
-                                // placeholderBuilder: (context) => Icon(Icons.error),
-                                // ),
-                                // // Speace between row
-                                //     const SizedBox(width: 20,)
+                                // SvgPicture Doesn't work in emulator, only on an Android device
+                                SvgPicture.network(
+                                country.flag, width:100 , height: 60,
+                                placeholderBuilder: (context) => Icon(Icons.error),
+                                ),
+                                // Speace between row
+                                    const SizedBox(width: 20,)
                               ],
                             ),
                           ),
@@ -93,15 +106,24 @@ class _homeState extends State<home> {
     );
   }
 
-// Search function
-// void searchCountry(String query){
-//  final suggestions = countryList.where((country){
-//   final countryName = country.name.toLowerCase();
-//   final input = query.toLowerCase();
+  // Search function
+  void searchCountry(String text) async {
+    // clean list
+    searchResult.clear();
+    if (text.isEmpty) {
+      setState(() {
+        // full list country
+        searchResult = countryList;
+      });
+      return;
+    }
 
-// return country.name.contains(input);
-//  }).toList();
-
-//  setState(() => countryList =  suggestions);
-// }
+    for (var country in countryList) {
+      if (country.name.toLowerCase().contains(text)) {
+        searchResult.add(country);
+      }
+    }
+// refresh list/screen
+    setState(() {});
+  }
 }
