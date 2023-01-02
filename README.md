@@ -18,6 +18,8 @@ List of countries and their weather.
 - [X] Google Chrome
 - [X] Microsoft Edge
 - [X] Android
+- [X] iOS
+
 
 ## Install:
 - Run flutter pub get.
