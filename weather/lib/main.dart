@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:weather/screens/home.dart';
 import 'package:weather/screens/splash.dart';
 void main() {
   runApp(const MyApp());
 }
-
-// Problems:
-// 1. image api problem
-// 2. search problem
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

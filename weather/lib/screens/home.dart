@@ -47,7 +47,7 @@ class _homeState extends State<home> {
                 if (snapshot.data == null) {
                   return const CircularProgressIndicator();
                 }
-                // if data have data
+                // if have data
                 else {
                   countryList = snapshot.data!;
 
@@ -75,6 +75,15 @@ class _homeState extends State<home> {
 //Row
                             child: Row(
                               children: [
+                                // SvgPictures Doesn't work in emulator, only on an Android device
+                                SvgPicture.network(
+                                  country.flag,
+                                  width: 100,
+                                  height: 60,
+                                  placeholderBuilder: (context) =>
+                                      Icon(Icons.error),
+                                ),
+
                                 Padding(
                                   padding: EdgeInsets.symmetric(
                                       horizontal: 25, vertical: 25),
@@ -84,14 +93,6 @@ class _homeState extends State<home> {
                                     style: TextStyle(fontSize: 20),
                                   ),
                                 ),
-
-                                // SvgPicture Doesn't work in emulator, only on an Android device
-                                SvgPicture.network(
-                                country.flag, width:100 , height: 60,
-                                placeholderBuilder: (context) => Icon(Icons.error),
-                                ),
-                                // Speace between row
-                                    const SizedBox(width: 20,)
                               ],
                             ),
                           ),

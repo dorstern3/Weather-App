@@ -21,6 +21,7 @@ class _weatherState extends State<weather> {
     // TODO: implement initState
     super.initState();
     search(widget.result);
+    // function to check if api weather work
     //search();
   }
 
