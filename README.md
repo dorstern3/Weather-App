@@ -11,8 +11,6 @@ List of countries and their weather.
 
 **SvgPicture Doesn't work in emulator, only on a Real device.**
 
-
-
 ## Platforms:
 - [X] Windows
 - [X] Google Chrome
@@ -22,4 +20,5 @@ List of countries and their weather.
 
 
 ## Install:
-- Run flutter pub get.
+- Run flutter pub get
+- Run flutter run -v (for apk file).
