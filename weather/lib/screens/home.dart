@@ -75,7 +75,7 @@ class _homeState extends State<home> {
 //Row
                             child: Row(
                               children: [
-                                //SvgPictures Doesn't work in emulator, only on an Real device
+                                //SvgPictures Doesn't work in emulator, only on a Real device
                                 SvgPicture.network(
                                   country.flag,
                                   width: 100,
